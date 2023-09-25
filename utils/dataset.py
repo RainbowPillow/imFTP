@@ -82,7 +82,7 @@ class MyDataset(Dataset):
         beta = beta_a + delta * (beta_b - beta_a)
         effective_num_a = sigmoid(beta / 9) * 2
         effective_num_b = sigmoid(- beta / 9) * 2
-        class_weight = effective_num_b + (effective_num_a - effective_num_b) * (self.current_epoch / self.epochs)
+        class_weight = effective_num_a + (effective_num_b - effective_num_a) * (self.current_epoch / self.epochs)
         sum_weight = sum(class_weight)
 
         return class_weight, sum_weight
